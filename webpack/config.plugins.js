@@ -1,5 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
 
@@ -7,9 +7,9 @@ const plugins = [
   new CleanWebpackPlugin(),
   new webpack.HotModuleReplacementPlugin(),
   new HtmlWebpackPlugin({
-    template: path.resolve(__dirname, '..', 'public', 'index.html'),
-    filename: 'index.html',
-    inject: true
-  })
-]
-module.exports = plugins
+    template: path.resolve(__dirname, "..", "public", "index.html"),
+    filename: "index.html",
+    inject: true,
+  }),
+];
+module.exports = plugins;

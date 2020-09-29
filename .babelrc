@@ -1,3 +1,32 @@
 {
-  "presets": ["@babel/env", "@babel/preset-react"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry"
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@babel/plugin-transform-react-jsx-source"
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "modules": false
+          }
+        ]
+      ],
+      "plugins": [
+        "@babel/plugin-transform-react-jsx-source",
+        "dynamic-import-node"
+      ]
+    }
+  }
 }
