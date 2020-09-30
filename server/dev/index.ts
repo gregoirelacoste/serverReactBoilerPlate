@@ -2,8 +2,9 @@ import { Express } from "express";
 import { NODE_ENV } from "../../config/env";
 const webpack = require("webpack");
 const webpackDevMiddleware = require("webpack-dev-middleware");
-const webpackConfig = require("../../webpack/webpack.config");
+const getWebpackConfig = require("../../webpack/webpack.config");
 
+const webpackConfig = getWebpackConfig();
 const compiler = webpack(webpackConfig);
 
 export const devPath = (app: Express) => {

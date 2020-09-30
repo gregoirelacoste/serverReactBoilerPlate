@@ -6,8 +6,8 @@ const optimization = require("./config.optimization");
 const path = require("path");
 const plugins = require("./config.plugins");
 
-module.exports = {
-  entry: entry,
+const webpackConfig = () => ({
+  entry: entry(),
   mode: NODE_ENV,
   module: {
     rules: [
@@ -35,5 +35,7 @@ module.exports = {
   },
   devtool: devtool,
   optimization: optimization,
-  plugins: plugins,
-};
+  plugins: plugins(),
+});
+
+module.exports = webpackConfig;
