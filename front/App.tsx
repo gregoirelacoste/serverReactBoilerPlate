@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css";
-import { hot } from "react-hot-loader";
 
 const App = () => {
   return (
@@ -10,4 +9,4 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+export default App;

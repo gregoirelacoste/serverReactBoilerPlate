@@ -1,12 +1,13 @@
 import { NODE_ENV } from "../config/env";
 import { devtool } from "./config.devtool";
+import { entry } from "./config.entry";
 
 const optimization = require("./config.optimization");
 const path = require("path");
 const plugins = require("./config.plugins");
 
 module.exports = {
-  entry: { index: "./front/index.tsx" },
+  entry: entry,
   mode: NODE_ENV,
   module: {
     rules: [
