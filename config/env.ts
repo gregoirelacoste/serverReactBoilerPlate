@@ -9,3 +9,8 @@ if (!NODE_ENV) {
     `Vous n'avez pas défini la variable d'environnement NODE_ENV`
   );
 }
+if (!process.env.DATABASE_URL) {
+  throw new Error(
+    `Vous n'avez pas défini la variable d'environnement DATABASE_URL`
+  );
+}
