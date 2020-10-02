@@ -1,25 +1,8 @@
-const users = [
-  {
-    name: "The Awakening",
-    email: "Kate Chopin",
-  },
-  {
-    name: "greg",
-    email: "Kaggg",
-  },
-];
+import { PrismaClient } from "@prisma/client/scripts/default-index";
 
-const dossiers = [
-  {
-    name: "dossier",
-    description: "toto",
-    users: [{ name: "greg" }],
-  },
-];
-
-export const queries = {
+export const queries = (repo: PrismaClient) => ({
   Query: {
-    users: () => users,
-    dossiers: () => dossiers,
+    users: () => repo.user.findMany(),
+    dossiers: () => repo.dossier.findMany(),
   },
-};
+});

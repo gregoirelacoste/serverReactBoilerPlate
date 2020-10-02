@@ -10,7 +10,6 @@ export const typeDefs = gql`
     name: String
     numero: String
     description: String
-    users: [User]
   }
 
   input UserInput {
