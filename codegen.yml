@@ -1,0 +1,18 @@
+overwrite: true
+schema: "http://localhost:3000/api"
+documents: "./front/graphql/queries/**.query.ts"
+generates:
+  ./server/graphql/genTypes.ts:
+    plugins:
+      - "typescript"
+      - "typescript-graphql-files-modules"
+      - "typescript-document-nodes"
+      - "fragment-matcher"
+  ./front/graphql/genTypes.ts:
+      plugins:
+        - "typescript"
+        - "typescript-operations"
+        - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
