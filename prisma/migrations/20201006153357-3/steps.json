@@ -1,0 +1,20 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "dossier"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "dossierId"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Dossier",
+      "field": "user"
+    }
+  ]
+}
