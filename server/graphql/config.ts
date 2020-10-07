@@ -2,10 +2,10 @@ import { Express } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { typeDefs } from "./typeDefs";
 import { queries } from "./resolvers/queries";
-import { mutations } from "./resolvers/mutations";
 import prisma from "../../prisma/config";
+import { mutations } from "./resolvers/mutations";
 
-const resolvers = { ...queries(prisma), ...mutations(prisma) };
+const resolvers = { Query: queries(prisma), Mutation: mutations(prisma) };
 
 const server = new ApolloServer({
   typeDefs,

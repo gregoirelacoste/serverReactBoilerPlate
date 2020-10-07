@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "ts-node-dev server/index.ts",
+    "dev:server": "ts-node-dev --debug --inspect -- server/index.ts",
     "build:server": "tsc && shx rm -rf ./build/front",
     "build:front": "webpack --config webpack/webpack.config.ts --color -p --progress --mode=production",
     "build": "concurrently \"npm run build:server\" \"npm run build:front\"",

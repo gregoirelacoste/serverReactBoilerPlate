@@ -30,6 +30,7 @@
     "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
     "types": ["node"]
+
   },
   "exclude": [
     "node_modules"
