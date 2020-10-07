@@ -3,7 +3,6 @@ import { devPath } from "./dev";
 import { prodPath } from "./prod";
 import { NextFunction, Request, Response } from "express";
 import initApollo from "./graphql/config";
-
 const express = require("express");
 const app = express();
 

@@ -4,3 +4,6 @@ build
 .env
 /prisma/clientGenerated/
 /prisma/.env
+/front/graphql/genTypes.ts
+/server/graphql/genTypes.ts
+/graphql.schema.json

@@ -1,11 +1,16 @@
 import React from "react";
 import "./styles.css";
+import { ApolloProvider } from "@apollo/client";
+import client from "./graphql";
+import Home from "./Views/home";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1> Hello, World!</h1>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Home />
+      </div>
+    </ApolloProvider>
   );
 };
 

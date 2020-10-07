@@ -5,7 +5,6 @@ generates:
   ./server/graphql/genTypes.ts:
     plugins:
       - "typescript"
-      - "typescript-graphql-files-modules"
       - "typescript-document-nodes"
       - "fragment-matcher"
   ./front/graphql/genTypes.ts:
