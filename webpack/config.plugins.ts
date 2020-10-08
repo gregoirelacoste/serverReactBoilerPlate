@@ -1,12 +1,13 @@
-import { NODE_ENV } from "../config/env";
+import { Env } from "../config/env";
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
 
-const plugins = () => {
+const plugins = (env: Env) => {
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -14,15 +15,16 @@ const plugins = () => {
       filename: "index.html",
       inject: true,
     }),
+    new WatchMissingNodeModulesPlugin(path.resolve("node_modules")),
   ];
-  if (NODE_ENV !== "production") {
+  if (env === "development") {
     plugins.push(
-      new webpack.HotModuleReplacementPlugin(),
-      new ForkTsCheckerWebpackPlugin()
+      new ForkTsCheckerWebpackPlugin(),
+      new webpack.HotModuleReplacementPlugin()
     );
   }
 
-  if (NODE_ENV === "production") {
+  if (env === "production") {
     plugins.push(new CompressionPlugin());
   }
   return plugins;

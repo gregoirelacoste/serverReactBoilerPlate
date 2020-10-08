@@ -9,13 +9,11 @@
     "@babel/preset-react",
     "@babel/preset-typescript"
   ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ],
   "env": {
     "development": {
       "plugins": [
-        "@babel/plugin-transform-react-jsx-source"
+        "@babel/plugin-transform-react-jsx-source",
+        "react-hot-loader/babel"
       ]
     },
     "test": {

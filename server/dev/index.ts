@@ -6,7 +6,7 @@ const getWebpackConfig = require("../../webpack/webpack.config");
 
 export const devPath = (app: Express) => {
   if (NODE_ENV !== "development") return null;
-  const webpackConfig = getWebpackConfig();
+  const webpackConfig = getWebpackConfig("development");
   const compiler = webpack(webpackConfig);
 
   app.use(

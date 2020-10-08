@@ -12,7 +12,8 @@
     "db:migrate": "prisma migrate save --experimental && prisma migrate up --experimental && prisma generate",
     "dev": "npm run dev:server",
     "start": "NODE_ENV=production node ./build/server",
-    "gqlcodegen": "graphql-codegen --config codegen.yml"
+    "gqlcodegen": "graphql-codegen --config codegen.yml",
+    "buildstart": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "html-webpack-plugin": "^4.5.0",
     "prettier": "^2.1.2",
     "react-dev-utils": "^10.2.1",
+    "react-hot-loader": "^4.13.0",
     "shx": "^0.3.2",
     "style-loader": "^1.2.1",
     "ts-node-dev": "^1.0.0-pre.63",
@@ -70,7 +72,6 @@
     "helmet": "^4.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0"
   }
 }

@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "./clientGenerated"
 }
 
 datasource db {
@@ -20,7 +19,6 @@ model Dossier {
   name        String
   description String?
   numero      String
-    userId Int?
-
+  userId Int?
   user User? @relation(fields:[userId], references:[id])
 }

@@ -1,4 +1,4 @@
-import { NODE_ENV } from "../config/env";
+import { Env } from "../config/env";
 
-export const devtool =
-  NODE_ENV === "production" ? "source-map" : "inline-source-map";
+export const devtool = (env: Env) =>
+  env === "production" ? "source-map" : "inline-source-map";

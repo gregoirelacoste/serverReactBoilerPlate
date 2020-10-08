@@ -1,4 +1,4 @@
-import { NODE_ENV } from "../config/env";
+import { Env } from "../config/env";
 import { devtool } from "./config.devtool";
 import { entry } from "./config.entry";
 
@@ -6,9 +6,9 @@ const optimization = require("./config.optimization");
 const path = require("path");
 const plugins = require("./config.plugins");
 
-const webpackConfig = () => ({
-  entry: entry(),
-  mode: NODE_ENV,
+const webpackConfig = (env: Env = "production") => ({
+  entry: entry(env),
+  mode: env,
   module: {
     rules: [
       {
@@ -33,9 +33,9 @@ const webpackConfig = () => ({
     path: path.join(__dirname, "..", "build", "static"),
     publicPath: "/",
   },
-  devtool: devtool,
-  optimization: optimization,
-  plugins: plugins(),
+  devtool: devtool(env),
+  optimization: optimization(env),
+  plugins: plugins(env),
 });
 
 module.exports = webpackConfig;

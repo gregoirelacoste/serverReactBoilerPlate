@@ -173,6 +173,13 @@
     {
       "tag": "CreateField",
       "model": "Dossier",
+      "field": "userId",
+      "type": "Int",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Dossier",
       "field": "user",
       "type": "User",
       "arity": "Optional"
@@ -215,13 +222,6 @@
       },
       "argument": "references",
       "value": "[id]"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Dossier",
-      "field": "userId",
-      "type": "Int",
-      "arity": "Optional"
     }
   ]
 }
