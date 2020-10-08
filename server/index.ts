@@ -6,6 +6,8 @@ import initApollo from "./graphql/config";
 const express = require("express");
 const app = express();
 
+app.use(config.HELMET);
+
 devPath(app);
 prodPath(app, express);
 

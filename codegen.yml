@@ -1,5 +1,5 @@
 overwrite: true
-schema: "http://localhost:3000/api"
+schema: "./server/graphql/typeDefs.ts"
 documents: "./front/graphql/queries/**.query.ts"
 generates:
   ./server/graphql/genTypes.ts:

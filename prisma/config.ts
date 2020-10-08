@@ -1,6 +1,6 @@
 import { Env, NODE_ENV } from "../config/env";
 import { PrismaClientOptions } from "@prisma/client/runtime";
-import { PrismaClient } from "./clientGenerated";
+import { PrismaClient } from "@prisma/client";
 
 const prismaOptions = (env: Env): PrismaClientOptions => {
   if (env !== "development")
@@ -8,6 +8,11 @@ const prismaOptions = (env: Env): PrismaClientOptions => {
   return {
     log: ["query", "info", "warn", "error"],
     errorFormat: "colorless",
+    datasources: {
+      prisma: {
+        url: process.env.DATABASE_URL,
+      },
+    },
   };
 };
 

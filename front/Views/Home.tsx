@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles.css";
 import { useQuery } from "@apollo/client";
 import { GET_USERS } from "../graphql/queries/getUser.query";
 
@@ -8,7 +8,11 @@ const Home = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error...</p>;
   console.log(data);
-  return <h1>hello</h1>;
+  return (
+    <div className="App">
+      <h1>hello</h1>
+    </div>
+  );
 };
 
 export default Home;
