@@ -4,7 +4,6 @@ import App from "./App";
 
 // @ts-ignore
 if (module.hot) {
-  console.log("modull hoe");
   // @ts-ignore
   module.hot.accept();
 }

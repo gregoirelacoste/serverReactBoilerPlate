@@ -32,8 +32,8 @@ const webpackConfig = (_env = {}, argv: ArgV = {}): Configuration => ({
     modules: [path.resolve(__dirname, ".."), "node_modules"],
   },
   output: {
-    filename: "declarer-sinistre.main.[hash].js",
-    chunkFilename: "declarer-sinistre.chunk.[name].[hash].js",
+    filename: "levelone.main.[hash].js",
+    chunkFilename: "levelone.chunk.[name].[hash].js",
     path: path.join(__dirname, "..", "build", "static"),
     publicPath: "/",
   },
