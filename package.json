@@ -13,7 +13,8 @@
     "dev": "npm run dev:server",
     "start": "NODE_ENV=production node ./build/server",
     "gqlcodegen": "graphql-codegen --config codegen.yml",
-    "buildstart": "npm run build && npm run start"
+    "buildstart": "npm run build && npm run start",
+    "initiate": "npm install && npm run gqlcodegen && npm run build:server"
   },
   "repository": {
     "type": "git",
