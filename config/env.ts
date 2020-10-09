@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-export type Env = string | "production" | "development" | undefined;
+export type BuildMode = "production" | "development";
+export type Env = string | BuildMode | undefined;
 
 export const NODE_ENV: Env = process.env.NODE_ENV;
 

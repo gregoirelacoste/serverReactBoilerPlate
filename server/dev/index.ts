@@ -5,8 +5,9 @@ const webpackDevMiddleware = require("webpack-dev-middleware");
 const getWebpackConfig = require("../../webpack/webpack.config");
 
 export const devPath = (app: Express) => {
-  if (NODE_ENV !== "development") return null;
-  const webpackConfig = getWebpackConfig("development");
+  if (NODE_ENV !== "development") return;
+
+  const webpackConfig = getWebpackConfig({}, { mode: "development" });
   const compiler = webpack(webpackConfig);
 
   app.use(
@@ -14,5 +15,5 @@ export const devPath = (app: Express) => {
       publicPath: webpackConfig.output.publicPath,
     })
   );
-  return app.use(require("webpack-hot-middleware")(compiler));
+  app.use(require("webpack-hot-middleware")(compiler));
 };

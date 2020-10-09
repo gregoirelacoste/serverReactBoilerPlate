@@ -1,14 +1,18 @@
-import { Env } from "../config/env";
 import { devtool } from "./config.devtool";
 import { entry } from "./config.entry";
-
+import { Configuration } from "webpack";
+import { BuildMode } from "../config/env";
 const optimization = require("./config.optimization");
 const path = require("path");
 const plugins = require("./config.plugins");
 
-const webpackConfig = (env: Env = "production") => ({
-  entry: entry(env),
-  mode: env,
+interface ArgV {
+  mode?: BuildMode;
+}
+
+const webpackConfig = (_env = {}, argv: ArgV = {}): Configuration => ({
+  entry: entry(argv.mode),
+  mode: argv.mode,
   module: {
     rules: [
       {
@@ -33,9 +37,9 @@ const webpackConfig = (env: Env = "production") => ({
     path: path.join(__dirname, "..", "build", "static"),
     publicPath: "/",
   },
-  devtool: devtool(env),
-  optimization: optimization(env),
-  plugins: plugins(env),
+  devtool: devtool(argv.mode),
+  optimization: optimization(argv.mode),
+  plugins: plugins(argv.mode),
 });
 
 module.exports = webpackConfig;
