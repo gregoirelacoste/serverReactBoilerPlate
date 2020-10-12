@@ -11,6 +11,7 @@ app.use(config.HELMET);
 devPath(app);
 prodPath(app, express);
 
+app.use("/contents", express.static(config.CONTENTS_PATH));
 app.use((_req: Request, _res: Response, next: NextFunction) => {
   initApollo(app);
   next();
