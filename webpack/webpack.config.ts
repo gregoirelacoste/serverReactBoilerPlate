@@ -25,6 +25,10 @@ const webpackConfig = (_env = {}, argv: ArgV = {}): Configuration => ({
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.svg/,
+        loader: "svg-url-loader",
+      },
     ],
   },
   resolve: {
