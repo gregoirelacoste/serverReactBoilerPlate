@@ -10,7 +10,7 @@ const Home = () => {
   console.log(data);
   return (
     <div className="App">
-      <h1>hellossdf</h1>
+      <h1>Hello World !</h1>
     </div>
   );
 };
