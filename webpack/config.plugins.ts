@@ -6,8 +6,17 @@ const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
+const dotenv = require("dotenv");
 
 const plugins = (env: Env) => {
+  // call dotenv and it will return an Object with a parsed key
+  const dotenvParseOutput = dotenv.config().parsed;
+  // reduce it to a nice object, the same as before
+  const envKeys = Object.keys(dotenvParseOutput).reduce((prev: any, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(dotenvParseOutput[next]);
+    return prev;
+  }, {});
+
   const plugins = [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
@@ -16,6 +25,7 @@ const plugins = (env: Env) => {
       inject: true,
     }),
     new WatchMissingNodeModulesPlugin(path.resolve("node_modules")),
+    new webpack.DefinePlugin(envKeys),
   ];
   if (env === "development") {
     plugins.push(

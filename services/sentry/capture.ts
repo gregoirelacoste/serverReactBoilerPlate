@@ -1,38 +1,39 @@
 import * as Sentry from "@sentry/react";
 
-type ExtraFieldDef = object[] | string[];
+type ExtraFieldDef = any[];
 type Severity = "Error" | "Info" | "Warning" | null;
 
 interface CaptureTypes {
-  error?:any;
-  extraField?: ExtraFieldDef
-  severity: Severity,
+  error?: any;
+  extraField?: ExtraFieldDef;
+  severity?: Severity;
   tags?: {
     [key: string]: string;
-  }
-  user?: {id:string,username:string},
-  message?:string
+  };
+  user?: { id: string; username: string };
+  message?: string;
 }
 
 export const capture = ({
   error,
   extraField,
-  severity = 'Error',
+  severity = "Error",
   tags,
   user,
-  message
-}:CaptureTypes) => {
+  message,
+}: CaptureTypes) => {
   if (!process.env.REACT_APP_ENABLE_SENTRY)
     return console.error(
       "CAPTURE LOG ENVIRO DEV : ",
       severity,
-      error,
-      extraField
+      error || message,
+      extraField && extraField
     );
 
-  Sentry.withScope(scope => {
+  Sentry.withScope((scope) => {
+    scope.setLevel(Sentry.Severity[severity || "Error"]);
+
     if (extraField) {
-      scope.setLevel(Sentry.Severity[severity]);
       extraField.forEach((extra, i) => {
         scope.setExtra("details " + i, extra);
       });
@@ -43,10 +44,10 @@ export const capture = ({
     if (user) {
       scope.setUser({
         id: user.id,
-        username: user.username
+        username: user.username,
       });
     }
-    if(message)return Sentry.captureMessage(message);
+    if (message) return Sentry.captureMessage(message);
     return Sentry.captureException(error);
   });
 };
