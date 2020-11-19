@@ -8,7 +8,7 @@ const app = express();
 
 app.use(config.HELMET);
 
-devPath(app);
+devPath(app, express);
 prodPath(app, express);
 
 app.use("/contents", express.static(config.CONTENTS_PATH));

@@ -1,8 +1,8 @@
-import { currentForm } from "./variables/currentForm";
+import { feedbackVar } from "./variables/feedback.var";
 
 const queries = {
   fields: {
-    currentForm,
+    feedback: feedbackVar,
   },
 };
 

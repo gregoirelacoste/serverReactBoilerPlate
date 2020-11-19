@@ -29,7 +29,7 @@
     "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
     "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
-    "types": ["node"]
+    "types": ["node", "jest"]
 
   },
   "exclude": [
