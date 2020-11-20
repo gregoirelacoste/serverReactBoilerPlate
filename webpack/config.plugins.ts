@@ -19,6 +19,7 @@ const plugins = (env: Env) => {
       template: path.resolve(__dirname, "..", "front", "index.html"),
       filename: "index.html",
       inject: true,
+      GA_ID: process.env.GA_ID,
     }),
     new WatchMissingNodeModulesPlugin(path.resolve("node_modules")),
   ];
