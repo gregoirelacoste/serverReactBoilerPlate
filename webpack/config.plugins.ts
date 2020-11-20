@@ -6,7 +6,6 @@ const path = require("path");
 const CompressionPlugin = require("compression-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
-const dotenv = require("dotenv");
 
 const plugins = (env: Env) => {
 
