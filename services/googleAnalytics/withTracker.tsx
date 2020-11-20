@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { trackPage } from './trackPage'
-
-// Au niveau du router, encapsule le composant pour le tracker
+import { googleTracker } from "./googleTracker";
 
 interface OptionsTracker {
   title: string;
@@ -11,14 +9,14 @@ export default function withTracker(
   WrappedComponent: any,
   options: OptionsTracker = { title: "Sans Titre" }
 ) {
-  const HOC = class extends Component {
+  return class extends Component {
     componentDidMount() {
       const {
         // @ts-ignore
         location: { pathname: page },
       } = this.props;
 
-      trackPage(page, options.title);
+      googleTracker(page, options.title);
     }
 
     // eslint-disable-next-line camelcase
@@ -30,7 +28,7 @@ export default function withTracker(
       const nextPage = nextProps.location.pathname;
 
       if (currentPage !== nextPage) {
-        trackPage(nextPage, options.title);
+        googleTracker(nextPage, options.title);
       }
     }
 
@@ -38,6 +36,4 @@ export default function withTracker(
       return <WrappedComponent {...this.props} />;
     }
   };
-
-  return HOC;
 }
