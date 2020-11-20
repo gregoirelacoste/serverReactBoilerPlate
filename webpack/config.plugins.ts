@@ -1,4 +1,4 @@
-import { Env } from "../config/env";
+import { DEV_ENV, Env, formatEnvVarForWebpack, PROD_ENV } from '../config/env'
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
@@ -9,14 +9,7 @@ const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeM
 const dotenv = require("dotenv");
 
 const plugins = (env: Env) => {
-  // call dotenv and it will return an Object with a parsed key
-  const dotenvParseOutput = dotenv.config().parsed;
-  // reduce it to a nice object, the same as before
-  const envKeys = typeof dotenvParseOutput === "object" &&
-    dotenvParseOutput && Object.keys(dotenvParseOutput).reduce((prev: any, next) => {
-    prev[`process.env.${next}`] = JSON.stringify(dotenvParseOutput[next]);
-    return prev;
-  }, {});
+
 
   const plugins = [
     new CleanWebpackPlugin(),
@@ -26,17 +19,19 @@ const plugins = (env: Env) => {
       inject: true,
     }),
     new WatchMissingNodeModulesPlugin(path.resolve("node_modules")),
-    new webpack.DefinePlugin(envKeys),
+
   ];
   if (env === "development") {
     plugins.push(
       new ForkTsCheckerWebpackPlugin(),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin(formatEnvVarForWebpack(DEV_ENV)),
     );
   }
 
   if (env === "production") {
     plugins.push(new CompressionPlugin());
+    new webpack.DefinePlugin(formatEnvVarForWebpack(PROD_ENV))
   }
   return plugins;
 };
