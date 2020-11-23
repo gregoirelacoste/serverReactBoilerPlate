@@ -5,6 +5,8 @@ interface OptionsTracker {
   title: string;
 }
 
+//englobe les composants au niveau du router
+
 export default function withTracker(
   WrappedComponent: any,
   options: OptionsTracker = { title: "Sans Titre" }

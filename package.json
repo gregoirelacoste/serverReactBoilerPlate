@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "dev:server": "ts-node-dev --debug --inspect -- server/index.ts",
-    "build:server": "tsc && shx rm -rf ./build/front",
+    "build:server": "npm run gqlcodegen && tsc && shx rm -rf ./build/front",
     "build:front": "webpack --config webpack/webpack.config.ts --color -p --progress --mode=production",
-    "build": "concurrently \"npm run gqlcodegen\" \"npm run build:server\" \"npm run build:front\"",
+    "build": "concurrently \"npm run build:server\" \"npm run build:front\"",
     "db:migrate": "prisma migrate save --experimental && prisma migrate up --experimental && prisma generate",
     "dev": "npm run dev:server",
     "start": "NODE_ENV=production node ./build/server",
