@@ -59,7 +59,11 @@ class MailProvider {
 
       return { to, subject, sentId };
     } catch (e) {
-      const err = new MailError(subject, e, "Erreur envoie mail " + subject);
+      const err = new MailError(
+        e,
+        { subject, to },
+        "Erreur envoie mail " + subject
+      );
       console.warn(err);
       throw err;
     }

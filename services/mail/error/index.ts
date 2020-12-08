@@ -1,9 +1,14 @@
+interface Details {
+  to?: string;
+  subject?: string;
+}
+
 class MailError extends Error {
-  mailType: string;
-  details: object;
+  error: object;
+  details?: Details;
   message: string;
   date: Date;
-  constructor(mailType = "Non défini", details: object, ...params: any) {
+  constructor(error: object, details: Details, ...params: any) {
     super(...params);
     // Maintenir dans la pile une trace adéquate de l'endroit où l'erreur a été déclenchée (disponible seulement en V8)
     if (Error.captureStackTrace) {
@@ -11,9 +16,11 @@ class MailError extends Error {
     }
     this.name = "MailError";
     // Informations de déboguage personnalisées
-    this.mailType = "type : " + mailType;
     this.details = details;
-    this.message = "Erreur envoi mail " + mailType;
+    this.error = error;
+    this.message =
+      ("Erreur envoi mail " + this.details && this.details.subject) ||
+      "Indéfini";
     this.date = new Date();
   }
 }
