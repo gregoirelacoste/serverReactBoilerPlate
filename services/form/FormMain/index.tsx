@@ -6,14 +6,14 @@ import ChooseFields from "./ChooseFields";
 import { StepTypes } from "../types/formStep.types";
 import { HandleChangeType } from "./handleChange";
 import Validation from "./Validation";
+import { getOptionnalFields } from "./getOptionnalFields";
 
 interface ForMainProps {
   step: StepTypes;
   state: any;
-  fields: FormStep<any, string>[] | null;
+  fields: FormStep<any, object>[] | null;
   handleChange: HandleChangeType<any>;
   setStep: SetStepType;
-  optionnalFields: (field: any) => boolean;
   onValidation?: (any: any) => any;
   lastStep?: any;
   loading?: boolean;
@@ -25,7 +25,6 @@ const FormMain = ({
   state,
   handleChange,
   setStep,
-  optionnalFields,
   onValidation,
   lastStep,
   loading,
@@ -49,7 +48,7 @@ const FormMain = ({
             const fieldName = field.name;
             const fieldValue = state?.[stepName]?.values?.[fieldName];
             const fieldError = state?.[stepName]?.errors?.[fieldName]?.[0];
-            optionnalFields(field);
+            getOptionnalFields({ field, data: state });
 
             return (
               <ChooseFields

@@ -11,7 +11,7 @@ import CustomMultiple from "../components/CustomMultiple";
 import CustomSignature from "../components/CustomSignature";
 
 interface FieldsProps {
-  field: ContentFieldTypes<any>;
+  field: ContentFieldTypes<any, any>;
   value: any;
   error?: string;
   handleChange: HandleChangeType<any>;
@@ -32,7 +32,7 @@ const ChooseFields = ({
   handleChange,
   size = 6,
 }: FieldsProps) => {
-  if (field.optionnal) return null;
+  if (field.optional && !field.optional?.display) return null;
 
   const classes = useStyles();
   return (

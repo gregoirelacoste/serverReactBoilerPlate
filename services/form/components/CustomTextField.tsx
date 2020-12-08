@@ -21,7 +21,7 @@ const CustomTextField = ({
       <br />
       <TextField id={name} name={name} {...rest} />
       {textError && (
-        <Typography variant={"body1"} color={"error"} component={"p"}>
+        <Typography variant={"body1"} color={"secondary"} component={"p"}>
           {textError}
         </Typography>
       )}

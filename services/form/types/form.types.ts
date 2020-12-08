@@ -1,4 +1,5 @@
 import { GridSize } from "@material-ui/core";
+// @ts-ignore
 import React from "react";
 import { InputBaseComponentProps } from "@material-ui/core/InputBase/InputBase";
 
@@ -29,7 +30,7 @@ export interface MultipleChoiceTypes {
 }
 export type InputComponentType = React.ElementType<InputBaseComponentProps>;
 
-export interface ContentFieldTypes<Fields> {
+export interface ContentFieldTypes<Fields, Form> {
   name: Fields;
   component: ComponentTypes;
   label?: string;
@@ -37,7 +38,10 @@ export interface ContentFieldTypes<Fields> {
   items?: ItemTypes<any>[] | [];
   marks?: MarksTypes<any>[];
   multipleChoice?: MultipleChoiceTypes[];
-  optionnal?: boolean;
+  optional?: {
+    display: boolean;
+    condition: (data: Form) => boolean;
+  };
   size?: GridSize;
   inputComponent?: InputComponentType;
 }
@@ -47,8 +51,8 @@ export interface FormTypes<Input> {
   isValid: boolean;
   errors?: { [field: string]: [string] };
 }
-export interface FormStep<Fields, Name extends string> {
-  name: Name;
+export interface FormStep<Fields, Form> {
+  name: keyof Form;
   title: string;
-  fields?: ContentFieldTypes<Fields>[];
+  fields?: ContentFieldTypes<Fields, Form>[];
 }
