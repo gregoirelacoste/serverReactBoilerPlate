@@ -15,7 +15,9 @@
     "gqlcodegen": "graphql-codegen --config codegen.yml",
     "buildstart": "npm run build && npm run start",
     "initiate": "npm install && npm run gqlcodegen && npm run build:server",
-    "release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); npm run build && node services/sentry/createMapAndRelease.js)"
+    "release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); npm run build && node services/sentry/createMapAndRelease.js)",
+    "seeds": "node prisma/seeds/index.js",
+    "up:db" : "npm run db:migrate && npm run gqlcodegen"
   },
   "repository": {
     "type": "git",
