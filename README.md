@@ -30,3 +30,15 @@
 ###Start
 ``npm run dev``
 > localhost:3000
+> 
+
+##Mise en production
+Pour éviter tout problème de conflit de version de migrations : 
+- supprimer le dossier migrations dans primsa
+- supprimer la table migration en db
+- Variable post install :
+``npm run db:migrate && npm run:build``
+  
+Si aucune migration à faire
+  - Modifier variable post install :
+  ``npm run build``
