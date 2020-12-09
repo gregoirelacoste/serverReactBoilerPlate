@@ -2,14 +2,15 @@ version: '3'
 services:
   postgres:
     image: postgres:10.3
-    container_name: main_postgres
+    container_name: lvl_postgres
     restart: unless-stopped
     ports:
       - '5433:5432'
     environment:
+      POSTGRES_DB: lvlprisma
       POSTGRES_USER: prisma
       POSTGRES_PASSWORD: prisma
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - lvlpostgres:/var/lib/lvlpostgres/data
 volumes:
-  postgres: ~
+  lvlpostgres: ~
