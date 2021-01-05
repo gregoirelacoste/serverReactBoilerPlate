@@ -8,6 +8,7 @@
     "dev:server": "ts-node-dev --debug --inspect -- server/index.ts",
     "build:server": "tsc && shx rm -rf ./build/front",
     "build:front": "webpack --config webpack/webpack.config.ts --color -p --progress --mode=production",
+    "build:front:noprogress": "webpack --config webpack/webpack.config.ts -p --mode=production",
     "build": "npm run gqlcodegen && npm run build:server && npm run build:front:noprogress",
     "db:migrate": "prisma migrate save --experimental --name=migrate && prisma migrate up --experimental && prisma generate",
     "dev": "npm run dev:server",
