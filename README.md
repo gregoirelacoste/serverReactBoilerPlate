@@ -27,10 +27,12 @@
 - générer le codegen graphql / typescript
 ``npm run gqlcodegen``
 
+###Editer les services
+- supprimer les services inutiles dans ./services
+
 ###Start
 ``npm run dev``
 > localhost:3000
-> 
 
 ##Mise en production
 Pour éviter tout problème de conflit de version de migrations : 
