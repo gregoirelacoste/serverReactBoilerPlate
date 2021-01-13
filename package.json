@@ -18,7 +18,7 @@
     "initiate": "npm install && npm run gqlcodegen && npm run build:server",
     "release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); npm run build && node services/sentry/createMapAndRelease.js)",
     "seeds": "node prisma/seeds/index.js",
-    "up:db" : "npm run db:migrate && npm run gqlcodegen"
+    "up:db": "npm run db:migrate && npm run gqlcodegen"
   },
   "repository": {
     "type": "git",
@@ -91,6 +91,7 @@
     "react-dom": "^16.13.1",
     "react-ga": "^3.2.1",
     "react-router-dom": "^5.2.0",
+    "react-signature-canvas": "^1.0.3",
     "shx": "^0.3.2",
     "typescript": "^4.0.3",
     "validate.js": "^0.13.1",
