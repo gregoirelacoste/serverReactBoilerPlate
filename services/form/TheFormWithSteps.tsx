@@ -1,17 +1,18 @@
+// @ts-ignore
 import React from "react";
 import { Box, Grid, Typography } from "@material-ui/core";
-import { FormStep } from "../types/form.types";
-import NavForm, { SetStepType } from "./NavForm";
-import ChooseFields from "./ChooseFields";
-import { StepTypes } from "../types/formStep.types";
-import { HandleChangeType } from "./handleChange";
-import Validation from "./Validation";
-import { getOptionnalFields } from "./getOptionnalFields";
+import { FormWithStep } from "./types/form.types";
+import NavForm, { SetStepType } from "./FormMain/NavForm";
+import ChooseFields from "./FormMain/ChooseFields";
+import { StepTypes } from "./types/formStep.types";
+import { HandleChangeType } from "./FormMain/handleChange";
+import Validation from "./FormMain/Validation";
+import { getOptionnalFields } from "./FormMain/getOptionnalFields";
 
 interface ForMainProps {
   step: StepTypes;
   state: any;
-  fields: FormStep<any, object>[] | null;
+  fields: FormWithStep<any, object>[] | null;
   handleChange: HandleChangeType<any>;
   setStep: SetStepType;
   onValidation?: (any: any) => any;
@@ -19,7 +20,7 @@ interface ForMainProps {
   loading?: boolean;
 }
 
-const FormMain = ({
+const TheFormWithSteps = ({
   fields,
   step,
   state,
@@ -77,4 +78,4 @@ const FormMain = ({
     </>
   );
 };
-export default FormMain;
+export default TheFormWithSteps;

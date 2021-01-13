@@ -30,8 +30,20 @@ export interface MultipleChoiceTypes {
 }
 export type InputComponentType = React.ElementType<InputBaseComponentProps>;
 
-export interface ContentFieldTypes<Fields, Form> {
-  name: Fields;
+export interface FormTypes<Input> {
+  values: Input;
+  isValid: boolean;
+  errors?: { [field: string]: [string] };
+}
+
+export interface FormWithStep<FormSteps, Input> {
+  name: keyof FormSteps;
+  title: string;
+  fields?: ContentFieldTypes<Input>[];
+}
+
+export interface ContentFieldTypes<Input> {
+  name: keyof Input;
   component: ComponentTypes;
   label?: string;
   placeholder?: string;
@@ -40,19 +52,8 @@ export interface ContentFieldTypes<Fields, Form> {
   multipleChoice?: MultipleChoiceTypes[];
   optional?: {
     display: boolean;
-    condition: (data: Form) => boolean;
+    condition: (data: any) => boolean;
   };
   size?: GridSize;
   inputComponent?: InputComponentType;
-}
-
-export interface FormTypes<Input> {
-  values: Input;
-  isValid: boolean;
-  errors?: { [field: string]: [string] };
-}
-export interface FormStep<Fields, Form> {
-  name: keyof Form;
-  title: string;
-  fields?: ContentFieldTypes<Fields, Form>[];
 }

@@ -50,7 +50,7 @@ const CustomSignature = ({
           <SignatureCanvas
             penColor="black"
             canvasProps={{ className: classes.sigCanvas }}
-            ref={(ref) => {
+            ref={(ref: any) => {
               sigPad = ref;
             }}
           />

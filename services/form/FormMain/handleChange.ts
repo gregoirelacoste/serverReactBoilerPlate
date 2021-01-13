@@ -1,5 +1,4 @@
 import testError from "../../validateJS/test.error";
-import constraints from "../../../domain/form/formConstraints";
 
 export interface EventHandleChange<valueType> {
   target: { name: string; value: valueType };
@@ -7,27 +6,39 @@ export interface EventHandleChange<valueType> {
 
 export type HandleChangeType<valueType> = (
   e: EventHandleChange<valueType>
-) => null;
+) => void;
 
 export const getHandleChange = (
   data: any,
-  stepName: string,
-  setState: any
+  setState: any,
+  constraints: any = null,
+  stepName: string | null = null
 ): HandleChangeType<any> => (e: EventHandleChange<any>) => {
   const name = e?.target?.name;
   const value = e?.target?.value;
+  const dataForm = stepName ? data[stepName] : data;
+  const constraintsForm = stepName ? constraints[stepName] : constraints;
 
-  const newState = testError(
-    data[stepName],
-    name,
-    value,
-    constraints[stepName]
-  );
-
-  return setState({
-    ...data,
-    [stepName]: {
+  let newState;
+  if (constraints) {
+    newState = testError(dataForm, name, value, constraintsForm);
+  } else {
+    newState = {
+      ...dataForm,
+      values: { ...data?.values, [name]: value },
+      isValid: true,
+    };
+  }
+  if (stepName) {
+    return setState({
+      ...data,
+      [stepName]: {
+        ...newState,
+      },
+    });
+  } else {
+    return setState({
       ...newState,
-    },
-  });
+    });
+  }
 };

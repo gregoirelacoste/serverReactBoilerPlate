@@ -11,7 +11,7 @@ import CustomMultiple from "../components/CustomMultiple";
 import CustomSignature from "../components/CustomSignature";
 
 interface FieldsProps {
-  field: ContentFieldTypes<any, any>;
+  field: ContentFieldTypes<any>;
   value: any;
   error?: string;
   handleChange: HandleChangeType<any>;
@@ -36,7 +36,7 @@ const ChooseFields = ({
 
   const classes = useStyles();
   return (
-    <Grid item xs={12} md={size} key={field.name} className={classes.main}>
+    <Grid item xs={12} md={size} className={classes.main}>
       {field.component === "text" && (
         <CustomTextField
           fullWidth

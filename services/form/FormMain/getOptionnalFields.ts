@@ -2,7 +2,7 @@ import { Maybe } from "graphql/jsutils/Maybe";
 import { ContentFieldTypes } from "../types/form.types";
 
 export interface OptionnalFields {
-  field: ContentFieldTypes<any, any>;
+  field: ContentFieldTypes<any>;
   data: Maybe<any>;
 }
 
