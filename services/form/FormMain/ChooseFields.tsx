@@ -9,6 +9,7 @@ import CustomSlider from "../components/CustomSlider";
 import { makeStyles } from "@material-ui/core/styles";
 import CustomMultiple from "../components/CustomMultiple";
 import CustomSignature from "../components/CustomSignature";
+import CustomNumber from "../components/CustomNumber";
 
 interface FieldsProps {
   field: ContentFieldTypes<any>;
@@ -39,6 +40,22 @@ const ChooseFields = ({
     <Grid item xs={12} md={size} className={classes.main}>
       {field.component === "text" && (
         <CustomTextField
+          fullWidth
+          customLabel={field.label}
+          placeholder={field.placeholder}
+          name={field.name}
+          value={value || ""}
+          error={!!error}
+          onChange={handleChange}
+          textError={error}
+          variant={"outlined"}
+          InputProps={{
+            inputComponent: field.inputComponent,
+          }}
+        />
+      )}
+      {field.component === "number" && (
+        <CustomNumber
           fullWidth
           customLabel={field.label}
           placeholder={field.placeholder}

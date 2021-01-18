@@ -9,7 +9,8 @@ type ComponentTypes =
   | "switch"
   | "slider"
   | "multiple"
-  | "signature";
+  | "signature"
+  | "number";
 
 export interface ItemTypes<val> {
   value: val | string | number;
@@ -43,7 +44,7 @@ export interface FormWithStep<FormSteps, Input> {
 }
 
 export interface ContentFieldTypes<Input> {
-  name: keyof Input;
+  name: any | keyof Input;
   component: ComponentTypes;
   label?: string;
   placeholder?: string;

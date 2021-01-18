@@ -16,6 +16,7 @@
     - ./.env
     - ./prisma/.env
 - prisma : remplir le schema
+- générer le client prisma et les types : ``prisma generate``
 - prisma : créer la db 
 
 ``npm run db:migrate``

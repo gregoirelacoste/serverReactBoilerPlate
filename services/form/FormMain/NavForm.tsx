@@ -1,6 +1,7 @@
-import { Button, CircularProgress, Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import React from "react";
 import { StepTypes } from "../types/formStep.types";
+import CustomButton from "../components/CustomButton";
 
 export type SetStepType = ({ current: number }: StepTypes) => void;
 
@@ -49,19 +50,7 @@ const NavForm = ({
         </Grid>
       )}
       {onValidation && readableStep === maxStep && (
-        <Grid item>
-          {loading ? (
-            <CircularProgress />
-          ) : (
-            <Button
-              variant={"outlined"}
-              color={"primary"}
-              onClick={onValidation}
-            >
-              Finaliser
-            </Button>
-          )}
-        </Grid>
+        <CustomButton onClick={onValidation} loading={loading} />
       )}
     </Grid>
   );

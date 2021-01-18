@@ -4,6 +4,7 @@ import { ContentFieldTypes } from "./types/form.types";
 import ChooseFields from "./FormMain/ChooseFields";
 import { HandleChangeType } from "./FormMain/handleChange";
 import { getOptionnalFields } from "./FormMain/getOptionnalFields";
+import CustomButton from "./components/CustomButton";
 
 interface ForMainProps {
   state: any;
@@ -14,7 +15,14 @@ interface ForMainProps {
   title: string;
 }
 
-const TheForm = ({ fields, state, handleChange, title }: ForMainProps) => {
+const TheForm = ({
+  fields,
+  state,
+  handleChange,
+  title,
+  loading,
+  onValidation,
+}: ForMainProps) => {
   if (!fields) return null;
   return (
     <>
@@ -42,6 +50,11 @@ const TheForm = ({ fields, state, handleChange, title }: ForMainProps) => {
             />
           );
         })}
+        <CustomButton
+          onClick={onValidation}
+          loading={loading}
+          text={"Valider"}
+        />
       </Grid>
       <Box m={3} />
     </>
