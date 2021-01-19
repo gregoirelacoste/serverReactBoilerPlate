@@ -10,7 +10,7 @@
     "build:front": "webpack --config webpack/webpack.config.ts --color -p --progress --mode=production",
     "build:front:noprogress": "webpack --config webpack/webpack.config.ts -p --mode=production",
     "build": "npm run gqlcodegen && npm run build:server && npm run build:front:noprogress",
-    "db:migrate": "prisma migrate save --experimental --name=migrate && prisma migrate up --experimental && prisma generate",
+    "db:migrate": "prisma migrate dev --preview-feature && prisma generate",
     "dev": "npm run dev:server",
     "start": "NODE_ENV=production node ./build/server",
     "gqlcodegen": "graphql-codegen --config codegen.yml",
@@ -69,7 +69,7 @@
     "webpack": "^4.44.2",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.25.0"
+    "webpack-hot-middleware": "^2.25.0",
   },
   "dependencies": {
     "@apollo/client": "^3.2.2",
@@ -77,7 +77,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@prisma/cli": "^2.8.0",
+    "@prisma/cli": "^2.14.0",
     "@prisma/client": "^2.8.0",
     "@sentry/cli": "^1.59.0",
     "@sentry/react": "^5.27.4",
