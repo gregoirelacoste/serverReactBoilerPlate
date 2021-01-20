@@ -1,7 +1,7 @@
 import testError from "../../validateJS/test.error";
 
 export interface EventHandleChange<valueType> {
-  target: { name: string; value: valueType };
+  target: { name: string; value: valueType; type: string };
 }
 
 export type HandleChangeType<valueType> = (
@@ -15,7 +15,10 @@ export const getHandleChange = (
   stepName: string | null = null
 ): HandleChangeType<any> => (e: EventHandleChange<any>) => {
   const name = e?.target?.name;
-  const value = e?.target?.value;
+  let value = e?.target?.value;
+  const type = e?.target?.type;
+  if (type === "number") value = parseInt(value);
+
   const dataForm = stepName ? data[stepName] : data;
   const constraintsForm = stepName ? constraints[stepName] : constraints;
 

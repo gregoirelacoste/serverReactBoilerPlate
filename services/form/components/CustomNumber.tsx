@@ -1,3 +1,4 @@
+// @ts-ignore
 import React from "react";
 import { OutlinedTextFieldProps } from "@material-ui/core/TextField/TextField";
 import { TextField, Typography } from "@material-ui/core";
